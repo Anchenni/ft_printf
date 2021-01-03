@@ -3,13 +3,11 @@
 int main(int ac, char const **argv)
 {
 	char *s_hidden = "hi low";
-	printf("!%5.0s!", "Hello");
+	printf("hello commet tu va, je m'appelle anwwwar et toi ? vola 5697978 gjgdhsj ");
 	printf("\n\n");
-	ft_printf("!%5.0s!", "Hello");
+	ft_printf("hello commet tu va, je m'appelle anwwwar et toi ? vola 5697978 gjgdhsj ");
 
 
-	// printf("!%-7.-3s!", "yolo");
-	// printf("\n\n");
-	// ft_printf("!%-7.-3s!", "yolo");
+	
 
 }	

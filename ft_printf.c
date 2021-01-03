@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:42 by anchenni          #+#    #+#             */
-/*   Updated: 2021/01/03 19:17:41 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/03 21:41:18 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,10 @@ void    ft_printf(char *src, ... )
 			else {
 				
 				g_prec = atoi(src + i);	
-							
+				if (g_prec < 0){
+					g_m = 1;
+					g_prec *= -1;
+				}			
 			}	
 			while(src[i] == '-'){
 				g_m +=1;

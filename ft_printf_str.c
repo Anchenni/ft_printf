@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:34 by anchenni          #+#    #+#             */
-/*   Updated: 2021/01/03 19:19:30 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/03 21:48:17 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void    ft_printf_str(va_list *my_list)
 
 	// printf("\n w = %d", g_w);
 	// 	printf("\n prec = %d", g_prec);
-	int leng_str = ft_strlen(src);
 
+	int leng_str = ft_strlen(src);
 	if(g_w > 0 && g_m == 0){
 		 
 		if(g_w >= g_prec){    
@@ -133,11 +133,19 @@ void    ft_printf_str(va_list *my_list)
 
 		}	else if (g_w < leng_str){
 			
+			
 			while(leng_str > 0 && src[i]){
 					ft_putchar(src[i++]);//* = ' ' 
 					leng_str--;
 					
 				}
+		}else if(leng_str == 1 || leng_str == 0){
+			srccomplet = g_w;
+			while( srccomplet != 0){
+				ft_putchar(' ');
+
+				srccomplet--;
+			}
 		}
 	}
 
@@ -165,8 +173,8 @@ void    ft_printf_str(va_list *my_list)
 				ft_putstr(src);
 			}else
 				if (g_m >= 1){
+					
 					if(g_p && g_prec < leng_str && g_prec > g_w){
-						
 						i = 0;
 						
 						if(leng_str < g_prec){
@@ -190,6 +198,7 @@ void    ft_printf_str(va_list *my_list)
 					}
 					else {
 						if (g_w && g_prec < leng_str && g_p){
+							
 						srccomplet = g_prec;
 						while(srccomplet != 0){
 							ft_putchar(src[i++]);//* = ' ' 
@@ -204,6 +213,8 @@ void    ft_printf_str(va_list *my_list)
 					}
 					}else if(g_w > 0 ){
 						ft_putstr(src);
+					}else if(g_w == 0 && g_prec > 0){
+						ft_putstr(src);
 					}
 						
 						} // ft_putstr
@@ -216,7 +227,19 @@ void    ft_printf_str(va_list *my_list)
 						write(1, " ", 1);  //* = ' ' 
 						srccomplet--;
 					}
+
 						}
+					// else if(g_prec == 0 && g_prec < leng_str){
+					// 		printf("G prec  = %d \n", g_prec);
+					// 		srccomplet = g_prec;
+						
+						
+					// 	while(srccomplet != 0){
+
+					// 	write(1, " ", 1);  //* = ' ' 
+					// 	srccomplet--;
+					// }
+					// 	}
 				}
 				else{
 						
