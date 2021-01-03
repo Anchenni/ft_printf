@@ -140,6 +140,7 @@ void    ft_printf_x(va_list *my_list)
 					
 			leng_zero = g_w - g_length_hex;
 				}
+				
 			}
 		}	
 		
@@ -147,12 +148,19 @@ void    ft_printf_x(va_list *my_list)
 			leng_space = g_w - g_prec;
 		}else if(g_p && g_w  && g_w > g_prec) 
 		{
-			
+
 			leng_space = g_w - g_length_hex;
 		}
 		while(leng_space != 0){
 			write(1, " ", 1);
 			leng_space--;
+		}
+		
+		if(g_prec == 0 && g_w < g_length_hex && !g_p){
+					leng_zero = 0;
+				}
+		else if(g_prec > 0 && g_prec < g_length_hex && g_w > 0){
+			leng_zero = 0;
 		}
 	 	while(leng_zero != 0){
 

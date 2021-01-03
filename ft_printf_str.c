@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:34 by anchenni          #+#    #+#             */
-/*   Updated: 2020/12/12 19:38:28 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/03 19:19:30 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,13 @@ void    ft_printf_str(va_list *my_list)
 				if (g_w > 0 && g_prec == 0 ) {
 					if(g_w && g_p ){
 					}
-						if(g_p && g_prec == 0 && g_w){
-
+						if(g_p > 0  && g_prec == 0 && g_w > 0){
 						}else
-					
+						 
 						 if ((nul != NULL || !g_p )){
 							
+							ft_putstr(src);
+						}else if(g_w > 0 && g_w > leng_str && g_p == 0){
 							ft_putstr(src);
 						}
 				}else{
@@ -201,7 +202,7 @@ void    ft_printf_str(va_list *my_list)
 						write(1, " ", 1);  //* = ' ' 
 						srccomplet--;
 					}
-					}else {
+					}else if(g_w > 0 ){
 						ft_putstr(src);
 					}
 						
@@ -242,7 +243,7 @@ void    ft_printf_str(va_list *my_list)
 				}
 				if(!g_p && !g_w && g_m == 0)
 					 ft_putstr(src);
-				
+				g_p = 0;
 		}
 	}
 
