@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:05 by anchenni          #+#    #+#             */
-/*   Updated: 2020/12/06 23:10:24 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/04 01:07:26 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int g_length_hex ;
 int g_m ;
 int g_compt;
 int g_space;
+int g_prec_neg;
 va_list my_list;
 
+void    ft_printf_char_cent(void);
 void	ft_decimal_tohexa_plus(size_t n);
 void	ft_putnbr_base_p(int nb, char *base);
 void	ft_putnbr_base_compt(int nb, char *base);

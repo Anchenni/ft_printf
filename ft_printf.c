@@ -6,18 +6,11 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:42 by anchenni          #+#    #+#             */
-/*   Updated: 2021/01/03 21:41:18 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/04 00:52:17 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-
-
-
-
-
-
 
 int findIndex(char *tab, char element)
 {
@@ -31,16 +24,24 @@ int findIndex(char *tab, char element)
 	}
 	return (-1);
 }
-
+void		init_zero(void){
+g_w = 0;
+g_z = 0;
+g_l_value = 0;
+g_prec = 0;
+g_p = 0;
+g_length_hex  = 0;
+g_m  = 0;
+g_compt = 0;
+g_space = 0;
+g_prec_neg = 0;
+}
 void    ft_printf(char *src, ... )
 {
+	// changer tous les write par ft_putchar
+	
 	void (*tabFunction[9]) (va_list *) ={ft_printf_str, ft_printf_char, ft_printf_nbr,ft_printf_i,ft_printf_u,ft_printf_x,ft_printf_bx, ft_printf_p, 0};    
-	g_w = 0;
-	g_prec = 0;
-	g_p = 0;
-	g_z = 0;
-	g_m = 0;
-	g_space = 0;
+	// init_zero();
 	char tabIndex[9] = {'s', 'c','d','i','u','x','X','p', 0};
 	va_list my_list;
 	int i = 0;
@@ -48,12 +49,14 @@ void    ft_printf(char *src, ... )
 	// int cont;
 
 	va_start(my_list, src);
+	// changer le for en while
 	for( i = 0; src[i] != 0; i++)
 	{	
 
 	
 		if(i != 0 && src[i - 1] == '%')
 		{
+			init_zero();
 			
 			while(src[i] == '0'){
 				g_z = 1;
@@ -99,9 +102,11 @@ void    ft_printf(char *src, ... )
 			
 			if(src[i] == '*'){
 				// printf("OKK");
+				
 				g_prec = va_arg(my_list, int);
 				if (g_prec < 0){
 					g_m = 1;
+					g_prec_neg = 1;
 					g_prec *= -1;
 				}
 
@@ -135,13 +140,18 @@ void    ft_printf(char *src, ... )
 			
 
 			else {
+				init_zero();
 				if( src[i] == '%'){
+					
 					ft_printf_percent();
 					i++;
+					if(src[i] != '%')
+						ft_putchar(src[i]);
+				}else
+				{
 					ft_putchar(src[i]);
-
 				}
-				 
+				
 			// printf("\nsrc de i = %s\n", &src[i] );
 			}
 

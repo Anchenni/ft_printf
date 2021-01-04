@@ -8,6 +8,7 @@ SRCS		=	ft_printf.c ft_utils.c ft_printf_str.c \
 				ft_printf_bx.c\
 				ft_printf_p.c\
 				ft_printf_percent.c\
+				ft_printf_char_cent.c\
 				
 				
 				

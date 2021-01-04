@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:50 by anchenni          #+#    #+#             */
-/*   Updated: 2020/12/12 19:29:11 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/04 00:25:09 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,9 +261,6 @@ signed long int h = num;
 		// printf("\n num %d \n", num);
 		if(num < 0 && g_prec >= leng_d  ){
 		signed long int h = num;
-
-       
-	
 		 ft_putnbr_long(h);
 		}
 		else if(num != 0 && g_prec >= 0){

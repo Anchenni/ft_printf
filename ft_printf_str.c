@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:34 by anchenni          #+#    #+#             */
-/*   Updated: 2021/01/03 21:48:17 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/04 01:03:09 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,6 @@ void    ft_printf_str(va_list *my_list)
 					
 					if(g_p && g_prec < leng_str && g_prec > g_w){
 						i = 0;
-						
 						if(leng_str < g_prec){
 						while(g_prec != 0){
 							ft_putchar(src[i++]);//* = ' ' 
@@ -200,12 +199,19 @@ void    ft_printf_str(va_list *my_list)
 						if (g_w && g_prec < leng_str && g_p){
 							
 						srccomplet = g_prec;
+						if(g_prec_neg == 1){
+							srccomplet++;
+							
+						}
 						while(srccomplet != 0){
 							ft_putchar(src[i++]);//* = ' ' 
 							srccomplet--;
 						}
 						if (g_w > g_prec )
 							srccomplet = g_w - g_prec;
+						if(g_prec_neg == 1){
+							srccomplet--;
+						}	
 						while(srccomplet != 0){
 
 						write(1, " ", 1);  //* = ' ' 
