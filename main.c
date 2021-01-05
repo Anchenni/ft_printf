@@ -1,11 +1,12 @@
-#include "printf.h"
-
+#include <stdio.h>
 int main(int ac, char const **argv)
 {
 	char *s_hidden = "hi low";
-	printf("!%5%!");
+	printf("%%%%%%%%%%");
 	printf("\n\n");	
-	ft_printf("!%5%!");
+	ft_printf("%%%%%%%%%%");
+	
+
 
 	
 	

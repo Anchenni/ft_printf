@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:05 by anchenni          #+#    #+#             */
-/*   Updated: 2021/01/04 01:07:26 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/04 23:40:54 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #ifndef _PRINTF_H
 # define _PRINTF_H
 
-#include <stdio.h>
+
 #include <stdarg.h>
 #include <unistd.h>
 #include <string.h>

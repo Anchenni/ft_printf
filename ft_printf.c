@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:42 by anchenni          #+#    #+#             */
-/*   Updated: 2021/01/04 00:52:17 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/04 21:56:37 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void    ft_printf(char *src, ... )
 	va_list my_list;
 	int i = 0;
 	int tempIndex=0;
+	int j = 0;
 	// int cont;
 
 	va_start(my_list, src);
@@ -140,13 +141,17 @@ void    ft_printf(char *src, ... )
 			
 
 			else {
-				init_zero();
+
 				if( src[i] == '%'){
-					
-					ft_printf_percent();
+					j++;
+					if(j % 2 == 1 ){
+						ft_printf_char_cent();
+					}
+					if(src[i + 1])
 					i++;
 					if(src[i] != '%')
-						ft_putchar(src[i]);
+					ft_putchar(src[i]);
+					
 				}else
 				{
 					ft_putchar(src[i]);

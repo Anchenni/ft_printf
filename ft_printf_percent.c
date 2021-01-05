@@ -7,6 +7,11 @@ void    ft_printf_percent(void)
 	if(g_w){
 		if(g_w >= 1 )
 			srccomplet = g_w - 1;
+			while(srccomplet != 0){
+
+			write(1, " ", 1);  //* = ' ' 
+			srccomplet--;
+			}
 	}
 	if (g_z >= 1){
 	 	

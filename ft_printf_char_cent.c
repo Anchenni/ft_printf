@@ -7,9 +7,9 @@ void    ft_printf_char_cent(void)
 	src = '%';
 	
 	
-	if(g_w > 0 ){
+	if(g_w > 0  && g_z == 0){
 		g_w--;
-		if(g_m > 0)
+		if(g_m > 0 )
 				   ft_putchar(src);
 		while(g_w != 0){
 		ft_putchar(' ');

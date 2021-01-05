@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:34 by anchenni          #+#    #+#             */
-/*   Updated: 2021/01/04 01:03:09 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/01/04 22:12:47 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,8 @@ void    ft_printf_str(va_list *my_list)
 					}else if(g_w > 0 ){
 						ft_putstr(src);
 					}else if(g_w == 0 && g_prec > 0){
+						ft_putstr(src);
+					}else if(g_w == 0 && g_prec == 0 && !g_p){
 						ft_putstr(src);
 					}
 						
