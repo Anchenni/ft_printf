@@ -1,4 +1,5 @@
 #include "printf.h"
+#include "stdio.h"
 
 void	ft_putnbr_u(unsigned int n)
 {
@@ -25,13 +26,13 @@ void    ft_printf_u(va_list *my_list)
 {
 
 
-int num = va_arg(*my_list, int);
+	unsigned int num = va_arg(*my_list, int);
 	int srccomplet = 0;
 	int leng_d = 0;
 	int leng_zero = 0;
 	int leng_space;
 
-			leng_d = find_leng_d(num);
+	leng_d = find_leng_d(num);
 
 
 	if (g_p > 0 ){
@@ -137,16 +138,19 @@ int num = va_arg(*my_list, int);
 			ft_putnbr_u(num);
 	 }else if (g_m >= 1){
 		 
-		 if(  g_prec > 0 && leng_d < g_prec){
-			 
-			 leng_zero = g_prec - leng_d;
+		 if(  g_prec > 0 && leng_d < g_prec ){
+			 if(g_w > 0 && g_w < g_prec && leng_d < g_w && leng_d < g_prec && g_prec > 0 && g_w < g_prec && g_z > 0){
+				 leng_zero = g_w - leng_d;
+			 }else{
+			 	leng_zero = g_prec - leng_d;
+			 }
+
 			//  if(num == 0){
 			// 	 leng_zero = g_w - g_prec;
 			//  }
 			 if(num < 0){
 				 ft_putchar('-');
 			 }
-			 
 			 while(leng_zero != 0){
 		
 	 		write(1, "0", 1);  //* = ' ' 
@@ -159,7 +163,6 @@ int num = va_arg(*my_list, int);
 			 }
 		 }
 		 
-		 		//    printf("\n g_prec = %d\n",g_m );
 
 
        if(!(num == 0) || (!g_p))

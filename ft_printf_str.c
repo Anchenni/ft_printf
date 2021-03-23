@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "printf.h"
+#include "stdio.h"
 
 
 
@@ -88,7 +89,7 @@ void    ft_printf_str(va_list *my_list)
 				ft_putchar(' ');
 				leng_prec--;
 			}
-			}else if(g_p && leng_str > g_w)
+			}else if(g_p && leng_str >= g_w)
 			{
 				while(leng_prec != 0){
 				ft_putchar(' ');
@@ -107,11 +108,14 @@ void    ft_printf_str(va_list *my_list)
 				{
 				leng_prec = g_prec;
 			}
-			if (g_w  ){
+			if (g_w  ){							
+
+
 				if (g_w > 0 && g_prec == 0 ) {
 					if(g_w && g_p ){
 					}
 						if(g_p > 0  && g_prec == 0 && g_w > 0){
+							
 						}else
 						 
 						 if ((nul != NULL || !g_p )){
@@ -121,6 +125,7 @@ void    ft_printf_str(va_list *my_list)
 							ft_putstr(src);
 						}
 				}else{
+
 				while(leng_prec > 0 && src[i]){
 					ft_putchar(src[i++]);//* = ' ' 
 					leng_prec--;
@@ -132,8 +137,9 @@ void    ft_printf_str(va_list *my_list)
 			
 
 		}	else if (g_w < leng_str){
-			
-			
+			if(leng_str > g_prec ){
+				leng_str = g_prec;
+			}
 			while(leng_str > 0 && src[i]){
 					ft_putchar(src[i++]);//* = ' ' 
 					leng_str--;
@@ -145,6 +151,22 @@ void    ft_printf_str(va_list *my_list)
 				ft_putchar(' ');
 
 				srccomplet--;
+			}
+		}
+		else{
+			if (g_w > leng_str ){
+				srccomplet = g_w - leng_str;
+				while( srccomplet != 0){
+				ft_putchar(' ');
+
+				srccomplet--;
+			}
+			
+			while(leng_str > 0 && src[i]){
+					ft_putchar(src[i++]);//* = ' ' 
+					leng_str--;
+					
+				}
 			}
 		}
 	}
@@ -272,9 +294,11 @@ void    ft_printf_str(va_list *my_list)
 						
 						
 				}
+				
 				if(!g_p && !g_w && g_m == 0)
 					 ft_putstr(src);
 				g_p = 0;
 		}
+		
 	}
 

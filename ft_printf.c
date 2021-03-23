@@ -144,13 +144,13 @@ void    ft_printf(char *src, ... )
 
 				if( src[i] == '%'){
 					j++;
-					if(j % 2 == 1 ){
+					if(j % 1 == 0 ){
 						ft_printf_char_cent();
 					}
 					if(src[i + 1])
-					i++;
+						i++;
 					if(src[i] != '%')
-					ft_putchar(src[i]);
+						ft_putchar(src[i]);
 					
 				}else
 				{
@@ -161,7 +161,6 @@ void    ft_printf(char *src, ... )
 			}
 
 		}else if(src[i]  != '%' ){
-			 
 			write(1, &src[i], 1);
 		}
 		// printf("src de i = %s\n", &src[i] );

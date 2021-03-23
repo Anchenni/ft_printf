@@ -1,4 +1,5 @@
 #include "printf.h"
+#include "stdio.h"
 
 void    ft_printf_char_cent(void)
 {
@@ -20,7 +21,7 @@ void    ft_printf_char_cent(void)
 
 	
 	}	
-	else if (g_p > 0)
+	else if (g_p > 0 && g_z == 0)
 		ft_putchar(src);
 	
 	else{
@@ -29,7 +30,8 @@ void    ft_printf_char_cent(void)
 			srccomplet = g_w - 1;
 	}
 
-	if (g_z >= 1){
+	if (g_z >= 1 && g_m == 0){
+		
 	 	while(srccomplet != 0){
 
 	 	write(1, "0", 1);  //* = ' ' 

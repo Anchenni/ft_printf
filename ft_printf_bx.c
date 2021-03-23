@@ -1,8 +1,10 @@
 #include "printf.h"
+#include <stdio.h>
+
 
 void    ft_printf_bx(va_list *my_list)
 {
-	int num = va_arg(*my_list, int);
+	unsigned int num = va_arg(*my_list, int);
 	int srccomplet = 0;
 	find_length_hexa(num);
 	
@@ -40,10 +42,14 @@ void    ft_printf_bx(va_list *my_list)
 			}
 			}
 			else { 
-				
+			// printf("\n with = %d && g_leng_hex == %d\n", g_w, g_length_hex);	
 			leng_space = g_w - g_length_hex;
-			if(g_prec == 0 ){
+			// printf("\nleng_space == %d\n", leng_space);
+			if(g_prec == 0 && g_w > g_length_hex){
 				leng_space++;
+			}
+			if(g_prec == 0 && g_w > g_length_hex && g_w > g_prec && num != 0){
+				leng_space--;
 			}
 			while(leng_space > 0){
 				ft_putchar(' ');
@@ -60,7 +66,6 @@ void    ft_printf_bx(va_list *my_list)
 	else if(g_w && g_m == 0 && g_z == 0){
 		
 
-
 		if(g_w >= g_length_hex )
 
 			srccomplet = g_w - g_length_hex;
@@ -74,21 +79,24 @@ void    ft_printf_bx(va_list *my_list)
 			ft_putchar('-');
 		 }
 		if(g_w > 0 ){
-			if(g_w < g_prec && g_prec > g_length_hex){
+			if(g_w < g_prec && g_prec > g_length_hex && g_w < g_length_hex){
+				
 				leng_zero = g_length_hex + 1;
 			}else
 			if(num == 0 && g_prec){
+				
 				leng_zero = g_prec ;
 			}else
-			if(g_prec > g_length_hex && g_w > g_prec ){
+			if(g_prec > g_length_hex && g_w > g_prec  ){
+				// leng_zero = g_w - g_prec;
 				
-				leng_zero = g_w - g_prec;
+				leng_zero =  g_prec - g_length_hex;
 			}else if (g_prec < g_length_hex && g_prec > 0){
 				
 				
 			}else if( g_w > g_length_hex){
-				
 				if(g_prec > g_w && g_length_hex < g_prec){
+					
 					leng_zero = g_prec - g_length_hex;
 				}else{
 					
@@ -209,7 +217,7 @@ void    ft_printf_bx(va_list *my_list)
 	 }
 	 }
 	 else{
-	
+		//  printf("srccomm = %d\n", srccomplet);
 	 	while(srccomplet != 0){
 
 	 		write(1, " ", 1);  //* = ' ' 

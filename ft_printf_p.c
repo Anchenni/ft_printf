@@ -1,4 +1,6 @@
 #include "printf.h"
+#include "stdio.h"
+
 
 void	ft_decimal_tohexa(size_t n)
 {
@@ -66,26 +68,41 @@ void	ft_printf_p(va_list *my_list)
 
 
 	}else if (g_m >= 1){
-		
 		ft_putstr("0x");
-		if(num == 0 && g_prec >= 0){
+		// printf("\n g_p = %d\n", g_p);
+		if(num == 0 && g_prec > 0 ){
+
 			srccomplet++;
+			// if (g_p == 0 && num ){
+			// 	ft_decimal_tohexa(num);
+			// }
 		}
-		else
+		else if(g_p == 0){
 			ft_decimal_tohexa(num);
+			
+		}
 		if(g_w < g_length_hex ){	
 			if(num == 0){
 				ft_decimal_tohexa(num);
 				srccomplet -= 1;
 							}			
 			find_length_hexa(num);
-			if (!(num == 0))
-			srccomplet = g_w - g_length_hex - 2;
-		while(srccomplet != 0){
+			if (!(num == 0)){
+				if(g_w == 0){
+					srccomplet = 0;
+				}else
+				srccomplet = g_w - g_length_hex - 2;
+			}	
+			if(!g_w){
+				
+				while(srccomplet != 0){
 
-			write(1, " ", 1);  //* = ' ' 
-			srccomplet--;
-		}
+					write(1, " ", 1);  //* = ' ' 
+					srccomplet--;
+				}
+				if(num != 0)
+				ft_decimal_tohexa(num);
+			}
 		}else{
 			
 				find_length_hexa(num);
@@ -94,7 +111,10 @@ void	ft_printf_p(va_list *my_list)
 				if(g_p && num == 0){
 					srccomplet = g_w - 2;
 				}else
-			srccomplet = g_w - g_length_hex - 2;
+					srccomplet = g_w - g_length_hex - 2;
+			if(srccomplet < 0){
+				srccomplet = 0;
+			}
 			while(srccomplet != 0){
 
 			write(1, " ", 1);  //* = ' ' 
@@ -105,15 +125,18 @@ void	ft_printf_p(va_list *my_list)
 	}
 	
 	else{
-		if(num == 0 && g_prec == 0 && g_w){
+		if(num == 0 && g_prec == 0 && g_w ){
 
 			srccomplet = g_w - 2 ;
-			if (num == 0){
+			if (num == 0 && g_p == 0){
 				srccomplet--;
 			}
 
 		}
 if(g_length_hex < g_w){
+		if(num == 0 && g_w < g_length_hex){
+			srccomplet++;
+		}
 			while(srccomplet  != 0){
 
 			write(1, " ", 1);  //* = ' ' 
