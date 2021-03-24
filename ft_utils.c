@@ -15,6 +15,7 @@
 void ft_putchar(char c)
 {
 	write(1, &c, 1);
+	g_cont += 1;
 }
 void	ft_putstr(char *str)
 {

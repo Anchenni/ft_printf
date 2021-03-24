@@ -136,10 +136,12 @@ void    ft_printf_u(va_list *my_list)
        
 	
 			ft_putnbr_u(num);
-	 }else if (g_m >= 1){
+	 }else if (g_m >= 1 ){
 		 
-		 if(  g_prec > 0 && leng_d < g_prec ){
+		 if(  g_prec > 0 && leng_d < g_prec){
+			 
 			 if(g_w > 0 && g_w < g_prec && leng_d < g_w && leng_d < g_prec && g_prec > 0 && g_w < g_prec && g_z > 0){
+				 
 				 leng_zero = g_w - leng_d;
 			 }else{
 			 	leng_zero = g_prec - leng_d;
@@ -151,11 +153,13 @@ void    ft_printf_u(va_list *my_list)
 			 if(num < 0){
 				 ft_putchar('-');
 			 }
+			if (g_prec_neg == 0 || g_z > 0){
 			 while(leng_zero != 0){
 		
-	 		write(1, "0", 1);  //* = ' ' 
-	 		leng_zero--;
-	 	}
+	 			write(1, "0", 1);  //* = ' ' 
+	 			leng_zero--;
+	 		}
+			}
 		 } else {
 			 
 			 if(num < 0){
@@ -164,10 +168,24 @@ void    ft_printf_u(va_list *my_list)
 		 }
 		 
 
-
-       if(!(num == 0) || (!g_p))
-	
+		
+       if(!(num == 0) || (!g_p)){
+		//    printf("g_m = %d neg = %d\n", g_m,g_prec_neg);
 			ft_putnbr_u(num);
+			if( g_prec_neg > 0 && g_z == 0){
+			if(g_prec < g_w && g_m > 0 ){
+				leng_space = g_prec - leng_d;
+			}else
+			 leng_space = g_w - leng_d;
+			 
+			 while (leng_space != 0)
+			 {
+				 write(1, " ", 1);
+				 leng_space--;
+			 }
+			 
+		 }
+	   }
 		 if(g_prec > 0 && g_w  && num == 0)
 			ft_putnbr_u(num);
 			else if(num == 0 && g_m == 1 && g_p == 1 && g_w == 0 ){

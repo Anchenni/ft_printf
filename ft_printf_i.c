@@ -146,12 +146,13 @@ void    ft_printf_i(va_list *my_list)
 			 	{
 					 leng_zero = g_w - leng_d;
 				 }
-			 
+			  if (g_prec_neg == 0 || g_z > 0){
 			 while(leng_zero != 0){
 		
 	 		write(1, "0", 1);  //* = ' ' 
 	 		leng_zero--;
 	 	}
+			  }
 		 } else {
 			 
 			 if(num < 0){
@@ -163,9 +164,24 @@ void    ft_printf_i(va_list *my_list)
 
 signed long int h = num;
 
-       if(!(num == 0) || (!g_p))
+       if(!(num == 0) || (!g_p)){
 	
 		 ft_putnbr_long(h);
+		 if( g_prec_neg > 0 && g_z == 0){
+			if(g_prec < g_w && g_m > 0 ){
+				leng_space = g_prec - leng_d;
+			}else
+			 leng_space = g_w - leng_d;
+			 
+			 while (leng_space > 0)
+			 {
+				 write(1, " ", 1);
+				 leng_space--;
+			 }
+			 
+		 }
+	 
+	 }
 		 if(g_prec > 0 && g_w  && num == 0)
 		 			 ft_putnbr_long(h);
 					  else if(num == 0 && g_m == 1 && g_p == 1 && g_w == 0 ){
@@ -246,3 +262,4 @@ signed long int h = num;
 
 
 }
+

@@ -36,7 +36,7 @@ g_compt = 0;
 g_space = 0;
 g_prec_neg = 0;
 }
-void    ft_printf(char *src, ... )
+int    ft_printf(char *src, ... )
 {
 	// changer tous les write par ft_putchar
 	
@@ -166,7 +166,7 @@ void    ft_printf(char *src, ... )
 		// printf("src de i = %s\n", &src[i] );
 
 	}	
-	
+	return (g_cont);
 }
 
 

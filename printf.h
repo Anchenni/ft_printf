@@ -30,6 +30,7 @@ int g_m ;
 int g_compt;
 int g_space;
 int g_prec_neg;
+int g_cont;
 va_list my_list;
 
 void    ft_printf_char_cent(void);
@@ -47,7 +48,7 @@ void    ft_printf_u(va_list *my_list);
 void    ft_printf_char(va_list *my_list);
 void	ft_printf_p(va_list *my_list);
 int findIndex(char *tab, char element);
-void    ft_printf(char *src, ... );
+int    ft_printf(char *src, ... );
 void ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_putnbr(int n);

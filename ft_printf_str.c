@@ -31,7 +31,7 @@ void    ft_printf_str(va_list *my_list)
 
 	// printf("\n w = %d", g_w);
 	// 	printf("\n prec = %d", g_prec);
-
+	
 	int leng_str = ft_strlen(src);
 	if(g_w > 0 && g_m == 0){
 		 
@@ -219,12 +219,16 @@ void    ft_printf_str(va_list *my_list)
 					}
 					else {
 						if (g_w && g_prec < leng_str && g_p){
-							
-						srccomplet = g_prec;
+							if(g_prec_neg > 0 && g_prec < leng_str ){
+								srccomplet = leng_str;
+								
+							}else
+								srccomplet = g_prec;
 						if(g_prec_neg == 1){
 							srccomplet++;
 							
 						}
+						// printf("leng src = %d\n", srccomplet);
 						while(srccomplet != 0){
 							ft_putchar(src[i++]);//* = ' ' 
 							srccomplet--;
@@ -233,6 +237,10 @@ void    ft_printf_str(va_list *my_list)
 							srccomplet = g_w - g_prec;
 						if(g_prec_neg == 1){
 							srccomplet--;
+						}
+						if(g_prec_neg > 0 && g_prec < leng_str ){
+								srccomplet = g_w - leng_str;
+								
 						}	
 						while(srccomplet != 0){
 
@@ -240,7 +248,7 @@ void    ft_printf_str(va_list *my_list)
 						srccomplet--;
 					}
 					}else if(g_w > 0 ){
-						ft_putstr(src);
+						 ft_putstr(src);
 					}else if(g_w == 0 && g_prec > 0){
 						ft_putstr(src);
 					}else if(g_w == 0 && g_prec == 0 && !g_p){
