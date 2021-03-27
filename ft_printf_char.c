@@ -28,8 +28,7 @@ void    ft_printf_char(va_list *my_list)
 
 	if (g_z >= 1){
 	 	while(srccomplet != 0){
-
-	 	write(1, "0", 1);  //* = ' ' 
+			ft_putchar('0');
 	 	srccomplet--;
 	 	}
 		 ft_putchar(src);
@@ -38,7 +37,7 @@ void    ft_printf_char(va_list *my_list)
 		ft_putchar(src); // ft_putstr
 		while(srccomplet != 0){
 
-		write(1, " ", 1);  //* = ' ' 
+		ft_putchar(' ');  //* = ' ' 
 		srccomplet--;
 		}
 	}
@@ -46,7 +45,7 @@ void    ft_printf_char(va_list *my_list)
 	
 		while(srccomplet != 0){
 
-			write(1, " ", 1);  //* = ' ' 
+			ft_putchar(' ');  //* = ' ' 
 			srccomplet--;
 		}
 		ft_putchar(src); // ft_putstr

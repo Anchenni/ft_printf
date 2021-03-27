@@ -54,7 +54,7 @@ void	ft_printf_p(va_list *my_list)
 
 		while(srccomplet != 0){
 
-			write(1, "0", 1);  //* = ' ' 
+			ft_putchar('0');  //* = ' ' 
 			srccomplet--;
 
 		}
@@ -97,7 +97,7 @@ void	ft_printf_p(va_list *my_list)
 				
 				while(srccomplet != 0){
 
-					write(1, " ", 1);  //* = ' ' 
+					ft_putchar(' ');  //* = ' ' 
 					srccomplet--;
 				}
 				if(num != 0)
@@ -117,7 +117,7 @@ void	ft_printf_p(va_list *my_list)
 			}
 			while(srccomplet != 0){
 
-			write(1, " ", 1);  //* = ' ' 
+			ft_putchar(' ');  //* = ' ' 
 			srccomplet--;
 		}
 			}
@@ -139,7 +139,7 @@ if(g_length_hex < g_w){
 		}
 			while(srccomplet  != 0){
 
-			write(1, " ", 1);  //* = ' ' 
+			ft_putchar(' ');  //* = ' ' 
 			srccomplet--;
 		}
 		}

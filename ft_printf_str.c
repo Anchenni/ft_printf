@@ -189,7 +189,7 @@ void    ft_printf_str(va_list *my_list)
 
 				while(srccomplet != 0){
 
-					write(1, "0", 1);  //* = ' ' 
+					ft_putchar('0');  //* = ' ' 
 					srccomplet--;
 				}
 				ft_putstr(src);
@@ -212,7 +212,7 @@ void    ft_printf_str(va_list *my_list)
 
 						while(srccomplet != 0){
 
-						write(1, " ", 1);  //* = ' ' 
+						ft_putchar(' ');  //* = ' ' 
 						srccomplet--;
 					}
 
@@ -229,7 +229,7 @@ void    ft_printf_str(va_list *my_list)
 							
 						}
 						// printf("leng src = %d\n", srccomplet);
-						while(srccomplet != 0){
+						while(srccomplet > 0){
 							ft_putchar(src[i++]);//* = ' ' 
 							srccomplet--;
 						}
@@ -242,9 +242,9 @@ void    ft_printf_str(va_list *my_list)
 								srccomplet = g_w - leng_str;
 								
 						}	
-						while(srccomplet != 0){
-
-						write(1, " ", 1);  //* = ' ' 
+						while(srccomplet > 0){
+							ft_putchar(' ');
+						// write(1, " ", 1);  //* = ' ' 
 						srccomplet--;
 					}
 					}else if(g_w > 0 ){
@@ -262,7 +262,7 @@ void    ft_printf_str(va_list *my_list)
 							
 					while(srccomplet != 0){
 
-						write(1, " ", 1);  //* = ' ' 
+						ft_putchar(' ');  //* = ' ' 
 						srccomplet--;
 					}
 

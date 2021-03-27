@@ -24,7 +24,7 @@ void	ft_putstr(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		write(1,&str[i], 1);
+		ft_putchar(str[i]);
 		i++;
 	}
 }
@@ -35,7 +35,7 @@ void	ft_putnbr(int n)
 	if (n < 0)
 	{
 		nbr = -n;
-		write(1, "-", 1);
+		ft_putchar('-');
 	}
 	else
 		nbr = n;

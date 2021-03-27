@@ -34,7 +34,7 @@ void    ft_printf_char_cent(void)
 		
 	 	while(srccomplet != 0){
 
-	 	write(1, "0", 1);  //* = ' ' 
+	 	ft_putchar('0');  //* = ' ' 
 	 	srccomplet--;
 	 	}
 		 ft_putchar(src);
@@ -43,7 +43,7 @@ void    ft_printf_char_cent(void)
 		ft_putchar(src); // ft_putstr
 		while(srccomplet != 0){
 
-		write(1, " ", 1);  //* = ' ' 
+		ft_putchar(' ');  //* = ' ' 
 		srccomplet--;
 		}
 	}
@@ -51,7 +51,7 @@ void    ft_printf_char_cent(void)
 	
 		while(srccomplet != 0){
 
-			write(1, " ", 1);  //* = ' ' 
+			ft_putchar(' ');  //* = ' ' 
 			srccomplet--;
 		}
 		ft_putchar(src); // ft_putstr

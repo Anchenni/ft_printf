@@ -114,7 +114,7 @@ void    ft_printf_bx(va_list *my_list)
 			leng_space = g_w - g_length_hex;
 		}
 		while(leng_space != 0){
-			write(1, " ", 1);
+			ft_putchar(' ');
 			leng_space--;
 		}
 		
@@ -126,7 +126,7 @@ void    ft_printf_bx(va_list *my_list)
 		}
 	 	while(leng_zero != 0){
 
-	 	write(1, "0", 1);  //* = ' ' 
+	 	ft_putchar('0');  //* = ' ' 
 	 	leng_zero--;
 		 
 	 	}
@@ -151,7 +151,7 @@ void    ft_printf_bx(va_list *my_list)
 			 if (g_prec_neg == 0 || g_z > 0){
 			 while(leng_zero != 0){
 		
-	 		write(1, "0", 1);  //* = ' ' 
+	 		ft_putchar('0');  //* = ' ' 
 	 		leng_zero--;
 	 	}
 			 }
@@ -174,9 +174,9 @@ void    ft_printf_bx(va_list *my_list)
 			}else
 			 leng_space = g_w - g_length_hex;
 			 
-			 while (leng_space != 0)
+			 while (leng_space > 0)
 			 {
-				 write(1, " ", 1);
+				 ft_putchar(' ');
 				 leng_space--;
 			 }
 			 
@@ -232,7 +232,7 @@ void    ft_printf_bx(va_list *my_list)
 		
 	 	while(leng_space != 0){
 		
-	 	write(1, " ", 1);  //* = ' ' 
+	 	ft_putchar(' ');  //* = ' ' 
 	 	leng_space--;
 	 	}
 		
@@ -242,7 +242,7 @@ void    ft_printf_bx(va_list *my_list)
 		//  printf("srccomm = %d\n", srccomplet);
 	 	while(srccomplet != 0){
 
-	 		write(1, " ", 1);  //* = ' ' 
+	 		ft_putchar(' ');  //* = ' ' 
 	 		srccomplet--;
 	 	}
 	  	

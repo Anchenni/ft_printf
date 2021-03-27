@@ -161,7 +161,8 @@ int    ft_printf(char *src, ... )
 			}
 
 		}else if(src[i]  != '%' ){
-			write(1, &src[i], 1);
+			// write(1, &src[i], 1);
+			ft_putchar(src[i]);
 		}
 		// printf("src de i = %s\n", &src[i] );
 
