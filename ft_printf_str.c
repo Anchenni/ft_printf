@@ -6,222 +6,128 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:34 by anchenni          #+#    #+#             */
-/*   Updated: 2021/01/04 22:12:47 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/04 22:22:20 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "stdio.h"
 
-void    ft_printf_str(va_list *my_list)
+void		find_leng_space_str(void)
 {
-	int srccomplet = 0;
-	int leng_prec;
-	int i = 0;
-	char *src = va_arg(*my_list, char *);
-	char *nul = src ;
-	if(src == NULL){
-		src = "(null)";
+	if (g_w > 0 && g_prec == 0 && g_nul != NULL)
+	{
+		if (!(g_w > g_leng_str && g_p == 0))
+			g_leng_prec = g_w;
 	}
-	int leng_str = ft_strlen(src);
-	if(g_w > 0 && g_m == 0){
-		if(g_w >= g_prec){    
-			if (g_w > 0 && g_prec == 0 && nul != NULL){
-				if (g_w > leng_str && g_p == 0 ){
-				}
-				leng_prec = g_w;
-			}
-			else	
-				if (g_prec > leng_str || g_w > leng_str){
-					leng_prec = g_w - leng_str;
-				}
-				else {
-					leng_prec = g_w - g_prec;	
-				}
-			if( g_prec < leng_str  ){
-				if (g_w > leng_str && g_prec ==  0 && !g_p){
-					leng_prec = g_w - leng_str;
-				}				
-				else{
-					leng_prec = g_w - g_prec;	
-				}
-			}
-			if(g_w > leng_str ){
-				if(nul == NULL && g_w > 0 && g_prec > 0 && g_w > g_prec && g_w > leng_str){
-					leng_prec = g_w - g_prec;
-				}else	
-					if( nul == NULL  && g_w < leng_str){
-						leng_prec = g_w ;
-					}else if(nul == NULL && g_w > leng_str && !g_p ){
-						leng_prec = g_w - ft_strlen(src);
-					}else if(nul == NULL)
-					{
-						leng_prec = g_w;
-					}
-				while(leng_prec != 0){
-					ft_putchar(' ');
-					leng_prec--;
-				}
-			}else if(g_p && leng_str >= g_w)
-			{
-				while(leng_prec != 0){
-					ft_putchar(' ');
-					leng_prec--;
-				}
-			}
-			if(g_prec > leng_str){
-				leng_prec = leng_str;
-			}
-			else if (g_w > leng_str && g_p == 0 ){
-				leng_prec = g_w - leng_str;
-			}	
-			else
-			{
-				leng_prec = g_prec;
-			}
-			if (g_w  ){						
-				if (g_w > 0 && g_prec == 0 ) {
-					if(g_w && g_p ){
-					}
-					if(g_p > 0  && g_prec == 0 && g_w > 0){
-					}else
-						if ((nul != NULL || !g_p )){
+	else if (g_prec > g_leng_str || g_w > g_leng_str)
+		g_leng_prec = g_w - g_leng_str;
+	else
+		g_leng_prec = g_w - g_prec;
+	if (g_prec < g_leng_str)
+	{
+		if (g_w > g_leng_str && g_prec == 0 && !g_p)
+			g_leng_prec = g_w - g_leng_str;
+		else
+			g_leng_prec = g_w - g_prec;
+	}
+}
 
-							ft_putstr(src);
-						}else if(g_w > 0 && g_w > leng_str && g_p == 0){
-							ft_putstr(src);
-						}
-				}else{
-					while(leng_prec > 0 && src[i]){
-						ft_putchar(src[i++]); 
-						leng_prec--;
-					}
-				}
+void		print_space_str(char *src)
+{
+	if (g_w > g_leng_str)
+	{
+		if (g_nul == NULL && g_w > 0 && g_prec > 0 && g_w > g_prec
+			&& g_w > g_leng_str)
+			g_leng_prec = g_w - g_prec;
+		else if (g_nul == NULL && g_w < g_leng_str)
+			g_leng_prec = g_w;
+		else if (g_nul == NULL && g_w > g_leng_str && !g_p)
+			g_leng_prec = g_w - ft_strlen(src);
+		else if (g_nul == NULL)
+			g_leng_prec = g_w;
+		while (g_leng_prec-- > 0)
+			ft_putchar(' ');
+	}
+	else if (g_p && g_leng_str >= g_w)
+	{
+		while (g_leng_prec-- > 0)
+			ft_putchar(' ');
+	}
+}
+
+void		wene_with_exist(char *src, int i)
+{
+	if (g_w)
+	{
+		if (g_w > 0 && g_prec == 0)
+		{
+			if (!(g_w && g_p))
+			{
+				if ((g_nul != NULL || !g_p))
+					ft_putstr(src);
 			}
-		}	else if (g_w < leng_str){
-			if(leng_str > g_prec ){
-				leng_str = g_prec;
-			}
-			while(leng_str > 0 && src[i]){
-				ft_putchar(src[i++]);
-				leng_str--;
-			}
-		}else if(leng_str == 1 || leng_str == 0){
-			srccomplet = g_w;
-			while( srccomplet != 0){
-				ft_putchar(' ');
-				srccomplet--;
-			}
+			else if (g_w > 0 && g_w > g_leng_str && g_p == 0)
+				ft_putstr(src);
 		}
-		else{
-			if (g_w > leng_str ){
-				srccomplet = g_w - leng_str;
-				while( srccomplet != 0){
-					ft_putchar(' ');
-					srccomplet--;
-				}
-				while(leng_str > 0 && src[i]){
-					ft_putchar(src[i++]);
-					leng_str--;
-				}
-			}
+		else
+		{
+			while (g_leng_prec-- > 0 && src[i])
+				ft_putchar(src[i++]);
 		}
 	}
-	else { 
-		if(g_w ){
-			int m = ft_strlen(src);
-			if(g_w >= m ){
-				srccomplet = g_w - ft_strlen(src);
-			}else
-			{
-				srccomplet = leng_str;
-			}
+}
+
+void		when_prec_is_bigger_than_with(char *src, int i)
+{
+	if (g_w < g_leng_str)
+	{
+		if (g_leng_str > g_prec)
+			g_leng_str = g_prec;
+		while (g_leng_str-- > 0 && src[i])
+			ft_putchar(src[i++]);
+	}
+	else if (g_leng_str == 1 || g_leng_str == 0)
+	{
+		g_srccomplet = g_w;
+		while (g_srccomplet-- > 0)
+			ft_putchar(' ');
+	}
+	else
+	{
+		if (g_w > g_leng_str)
+		{
+			g_srccomplet = g_w - g_leng_str;
+			while (g_srccomplet-- > 0)
+				ft_putchar(' ');
+			while (g_leng_str-- > 0 && src[i])
+				ft_putchar(src[i++]);
 		}
-		if (g_z >= 1){
-			while(srccomplet != 0){
-				ft_putchar('0');
-				srccomplet--;
-			}
+	}
+}
+
+void		ft_printf_str(va_list *g_my_list)
+{
+	int		i;
+	char	*src;
+
+	i = 0;
+	src = va_arg(*g_my_list, char *);
+	g_nul = src;
+	if (src == NULL)
+		src = "(null)";
+	g_leng_str = ft_strlen(src);
+	if (g_w > 0 && g_m == 0)
+		calculate_leng_space(src, i);
+	else
+	{
+		calculat_leng_str(src);
+		if (g_z >= 1)
+			print_zero_and_str(src);
+		else if (g_m > 0)
+			when_there_is_a_mines(src, i);
+		else
+			print_str(src, i);
+		if (!g_p && !g_w && g_m == 0)
 			ft_putstr(src);
-		}else
-			if (g_m >= 1){
-				if(g_p && g_prec < leng_str && g_prec > g_w){
-					i = 0;
-					if(leng_str < g_prec){
-						while(g_prec != 0){
-							ft_putchar(src[i++]);
-							g_prec--;
-						}
-					}else
-					{
-						ft_putstr(src);
-					}
-					if (g_w > 0)
-						srccomplet = leng_str - g_prec; 
-					while(srccomplet != 0){
-						ft_putchar(' ');  
-						srccomplet--;
-					}
-				}
-				else {
-					if (g_w && g_prec < leng_str && g_p){
-						if(g_prec_neg > 0 && g_prec < leng_str ){
-							srccomplet = leng_str;
-						}else
-							srccomplet = g_prec;
-						if(g_prec_neg == 1){
-							srccomplet++;
-						}
-						while(srccomplet > 0){
-							ft_putchar(src[i++]);
-							srccomplet--;
-						}
-						if (g_w > g_prec )
-							srccomplet = g_w - g_prec;
-						if(g_prec_neg == 1){
-							srccomplet--;
-						}
-						if(g_prec_neg > 0 && g_prec < leng_str ){
-							srccomplet = g_w - leng_str;
-						}	
-						while(srccomplet != 0){
-							ft_putchar(' ');
-							srccomplet--;
-						}
-					}else if(g_w > 0 ){
-						if(g_prec_neg > 0 && g_prec > leng_str && g_w < g_prec){
-							srccomplet = g_w - leng_str;	
-							while(srccomplet > 0){
-								ft_putchar(' '); 
-							srccomplet--;
-							}
-						}
-						ft_putstr(src);
-					}else if(g_w == 0 && g_prec > 0){
-						ft_putstr(src);
-					}else if(g_w == 0 && g_prec == 0 && !g_p){
-						ft_putstr(src);
-					}
-				} 
-				if (g_w > leng_str && g_prec_neg == 0){
-					while(srccomplet > 0){
-						ft_putchar(' '); 
-						srccomplet--;
-					}
-				}
-			}
-			else{
-				if (g_prec > leng_str )	
-					leng_prec = leng_str;
-				else 
-					leng_prec = g_prec;
-				while(leng_prec != 0 ){
-					ft_putchar(src[i++]);
-					leng_prec--;
-				} 
-			}
-		if(!g_p && !g_w && g_m == 0)
-			ft_putstr(src);
-		g_p = 0;
 	}
 }

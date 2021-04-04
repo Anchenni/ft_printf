@@ -1,7 +1,18 @@
-#include "printf.h"
-#include "stdio.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_u.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/03 19:59:50 by anchenni          #+#    #+#             */
+/*   Updated: 2021/04/04 22:22:30 by anchenni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_putnbr_u(unsigned int n)
+#include "printf.h"
+
+void			ft_putnbr_u(unsigned int n)
 {
 	unsigned int nbr;
 
@@ -22,243 +33,74 @@ void	ft_putnbr_u(unsigned int n)
 		ft_putchar(nbr + 48);
 	}
 }
-void    ft_printf_u(va_list *my_list)
+
+unsigned int	print_space_and_num_u(unsigned int num)
 {
-
-
-	unsigned int num = va_arg(*my_list, int);
-	int srccomplet = 0;
-	int leng_d = 0;
-	int leng_zero = 0;
-	int leng_space;
-
-	leng_d = find_leng_d(num);
-
-
-	if (g_p > 0 ){
-		
-		if(g_prec >=0 ){
-// 	 		printf("OK");
-		if(num < 0){
-			leng_d-- ;
-		}
-		if( g_prec >= g_w && leng_d <= g_prec && g_m == 0){
-			if( num < 0 && leng_d > g_prec){
-
-			}else
-			leng_zero = g_prec - leng_d;
-			if(num < 0){
-				ft_putchar('-');
-				leng_zero++;
-			}
-			if(num == 0){
-				leng_zero++;
-			}
-			if(num < 0){
-			leng_zero-- ;
-			}
-			while(leng_zero != 0){
-				ft_putchar('0');
-				leng_zero--;
-			}
-		}else if(g_w >= g_prec && g_m == 0)
+	calculate_leng_zero2_u(num);
+	if (!(num == 0) || (!g_p))
+	{
+		ft_putnbr_u(num);
+		if (g_prec_neg > 0 && g_z == 0)
 		{
-			
-
-			if(g_prec > leng_d ){
-				if(!g_w){
-					leng_space = g_prec - leng_d;
-				}
-				leng_space = g_w - g_prec;
-				if (num < 0){
-					leng_space--;
-				}
-				while(leng_space != 0){
+			if (g_prec < g_w && g_m > 0)
+				g_leng_space = g_prec - g_leng_d;
+			else
+				g_leng_space = g_w - g_leng_d;
+			while (g_leng_space-- > 0)
 				ft_putchar(' ');
-				leng_space--;
-				}
-				leng_zero = g_prec - leng_d ;
-				if(num < 0){
-					ft_putchar('-');
-				}
-				if(num == 0 && g_z == 0){
-				leng_zero++;
-				}
-				while(leng_zero != 0){
-				ft_putchar('0');
-				leng_zero--;
-			}
-			}
-			else {
-				
-			leng_d = find_leng_d(num);
-			leng_space = g_w - leng_d;
-			
-			if( num == 0){
-				leng_space = g_w - g_prec;
-			}
-			while(leng_space > 0 ){
-				ft_putchar(' ');
-				leng_space--;
-			}
-			}
-		}
-
 		}
 	}
-	// printf("\n g_prec = %d\n",g_prec );
-	// char buffer[20];
-	// sprintf(buffer, "%d",  num); // ft_putnbr
-	// ft_putstr(num); // ft_putstr
-	 else if(g_w){
+	if (g_prec > 0 && g_w && num == 0)
+		ft_putnbr_u(num);
+	else if (num == 0 && g_m == 1 && g_p == 1 && g_w == 0)
+		ft_putnbr_u(num);
+	calculat_leng_space2_u(num);
+	return (num);
+}
 
-		if(g_w >= find_leng_d(num) )
+unsigned int	print_u(unsigned int num)
+{
+	while (g_srccomplet-- != 0)
+		ft_putchar(' ');
+	if (num < 0 && g_prec >= g_leng_d)
+		ft_putnbr_u(num);
+	else if (num != 0 && g_prec >= 0)
+		ft_putnbr_u(num);
+	else if (num == 0 && g_p == 0)
+		ft_putnbr_u(num);
+	return (num);
+}
 
-			srccomplet = g_w - find_leng_d(num);
-	}
-
-	if (g_z >= 1 && g_m == 0){
-		
-	 	if ((num < 0) && (g_z == 1) && (leng_zero >= 0)){
-			 if(leng_d > g_prec)
+unsigned int	print_mines_and_zero_u(unsigned int num)
+{
+	if ((num < 0) && (g_z == 1) && (g_leng_zero >= 0))
+	{
+		if (g_leng_d > g_prec)
 			ft_putchar('-');
-		 }
-			
-	 	while(srccomplet != 0){
-
-	 	ft_putchar('0');  //* = ' ' 
-	 	srccomplet--;
-		 
-	 	}
-
-		 
-
-       
-	
-			ft_putnbr_u(num);
-	 }else if (g_m >= 1 ){
-		 
-		 if(  g_prec > 0 && leng_d < g_prec){
-			 
-			 if(g_w > 0 && g_w < g_prec && leng_d < g_w && leng_d < g_prec && g_prec > 0 && g_w < g_prec && g_z > 0){
-				 
-				 leng_zero = g_w - leng_d;
-			 }else{
-			 	leng_zero = g_prec - leng_d;
-			 }
-
-			//  if(num == 0){
-			// 	 leng_zero = g_w - g_prec;
-			//  }
-			 if(num < 0){
-				 ft_putchar('-');
-			 }
-			if (g_prec_neg == 0 || g_z > 0){
-			 while(leng_zero != 0){
-		
-	 			ft_putchar('0'); //* = ' ' 
-	 			leng_zero--;
-	 		}
-			}
-		 } else {
-			 
-			 if(num < 0){
-				 ft_putchar('-');
-			 }
-		 }
-		 
-
-		
-       if(!(num == 0) || (!g_p)){
-		//    printf("g_m = %d neg = %d\n", g_m,g_prec_neg);
-			ft_putnbr_u(num);
-			if( g_prec_neg > 0 && g_z == 0){
-			if(g_prec < g_w && g_m > 0 ){
-				leng_space = g_prec - leng_d;
-			}else
-			 leng_space = g_w - leng_d;
-			 
-			 while (leng_space > 0)
-			 {
-				 ft_putchar(' ');
-				 leng_space--;
-			 }
-			 
-		 }
-	   }
-		 if(g_prec > 0 && g_w  && num == 0)
-			ft_putnbr_u(num);
-			else if(num == 0 && g_m == 1 && g_p == 1 && g_w == 0 ){
-			ft_putnbr_u(num);
-
-		 }
-
-		 		if (g_w > g_prec ){
-			if(g_w > leng_d && g_prec > 0 ){
-					leng_space = g_w - g_prec;
-					if(g_prec < leng_d){
-						leng_space--;
-					}
-			}
-			else if(g_w > leng_d && g_prec){
-				
-				leng_space = g_w - leng_d;
-			}
-			else if((g_w > 0 && !g_p) && leng_d < g_w){
-				leng_space = g_w - leng_d;
-			}else
-			{
-				leng_space = 0;
-			}
-
-		if(num < 0 && g_prec ){
-			leng_space--;
-			if( g_w > leng_d && g_prec < leng_d){
-			  leng_space = leng_d - 1;
-
-			}
-			// 
-
-		}
-		
-		if(g_m == 1 && leng_d < g_w && g_p && g_prec == 0 ){
-			leng_space = g_w - g_prec;
-		}
-		
-	 	while(leng_space != 0){
-		
-	 	ft_putchar(' ');  //* = ' ' 
-	 	leng_space--;
-	 	}
-		
-	 }
-	 }
-	 else{
-		 
-	
-	 	while(srccomplet != 0){
-
-	 		ft_putchar(' ');  //* = ' ' 
-	 		srccomplet--;
-	 	}
-	  	
-	
-	//  	if (g_p == 0) 
-	// g_print_p = 1;
-		// printf("\n num %d \n", num);
-		if(num < 0 && g_prec >= leng_d  ){
-
-       
-	
-			ft_putnbr_u(num);
-		}
-		else if(num != 0 && g_prec >= 0){
-			ft_putnbr_u(num);
-		}else if(num == 0 && g_p == 0){
-			ft_putnbr_u(num);
-		}
-		
 	}
+	while (g_srccomplet-- != 0)
+		ft_putchar('0');
+	ft_putnbr_u(num);
+	return (num);
+}
 
+void			ft_printf_u(va_list *g_my_list)
+{
+	unsigned int num;
 
+	num = va_arg(*g_my_list, int);
+	g_leng_d = find_leng_d(num);
+	if (g_p > 0)
+		print_space_u(num);
+	else if (g_w)
+	{
+		if (g_w >= find_leng_d(num))
+			g_srccomplet = g_w - find_leng_d(num);
+	}
+	if (g_z >= 1 && g_m == 0)
+		print_mines_and_zero_u(num);
+	else if (g_m >= 1)
+		print_space_and_num_u(num);
+	else
+		print_u(num);
 }

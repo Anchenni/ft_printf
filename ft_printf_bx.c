@@ -1,271 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_bx.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/03 19:50:54 by anchenni          #+#    #+#             */
+/*   Updated: 2021/04/04 22:21:32 by anchenni         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
-#include <stdio.h>
 
-
-void    ft_printf_bx(va_list *my_list)
+unsigned int	find_leng_zero_spac_and_print_bx(unsigned int num)
 {
-	unsigned int num = va_arg(*my_list, int);
-	int srccomplet = 0;
-	find_length_hexa(num);
-	
-	int leng_zero;
-	int leng_space = 0;
-									
-
-			
-	
-	if (g_p > 0 && g_m == 0 && g_z == 0){
-		
-		if((g_prec) || (g_w) ){
-		if( g_prec >= g_w && g_length_hex < g_prec){
-			leng_zero = g_prec - g_length_hex;
-			if(num == 0)
-				leng_zero++;
-			while(leng_zero != 0){
-				ft_putchar('0');
-				leng_zero--;
-			}
-		}else if(g_w >= g_prec  )
-		{
-			if(g_prec > g_length_hex ){
-				leng_space = g_w - g_prec;
-				while(leng_space != 0){
-				ft_putchar(' ');
-				leng_space--;
-				}
-				leng_zero = g_prec - g_length_hex;
-				if(num == 0)
-					leng_zero++;
-				while(leng_zero != 0){
-				ft_putchar('0');
-				leng_zero--;
-			}
-			}
-			else { 
-			// printf("\n with = %d && g_leng_hex == %d\n", g_w, g_length_hex);	
-			leng_space = g_w - g_length_hex;
-			// printf("\nleng_space == %d\n", leng_space);
-			if(g_prec == 0 && g_w > g_length_hex){
-				leng_space++;
-			}
-			if(g_prec == 0 && g_w > g_length_hex && g_w > g_prec && num != 0){
-				leng_space--;
-			}
-			while(leng_space > 0){
-				ft_putchar(' ');
-				leng_space--;
-			}
-			}
-		}
-		}
-	}
-	
-	// char buffer[20];
-	// sprintf(buffer, "%d",  num); // ft_putnbr
-	// ft_putstr(num); // ft_putstr
-	else if(g_w && g_m == 0 && g_z == 0){
-		
-
-		if(g_w >= g_length_hex )
-
-			srccomplet = g_w - g_length_hex;
-	}
-	
-	if (g_z >= 1 && g_m == 0){
-		
-	 	if ((num < 0) && (g_z == 1) && (leng_zero >= 0)){
-
-			 if(g_length_hex > g_prec)
+	if ((num < 0) && (g_z == 1) && (g_leng_zero >= 0))
+	{
+		if (g_length_hex > g_prec)
 			ft_putchar('-');
-		 }
-		if(g_w > 0 ){
-			if(g_w < g_prec && g_prec > g_length_hex && g_w < g_length_hex){
-				
-				leng_zero = g_length_hex + 1;
-			}else
-			if(num == 0 && g_prec){
-				
-				leng_zero = g_prec ;
-			}else
-			if(g_prec > g_length_hex && g_w > g_prec  ){
-				// leng_zero = g_w - g_prec;
-				
-				leng_zero =  g_prec - g_length_hex;
-			}else if (g_prec < g_length_hex && g_prec > 0){
-				
-				
-			}else if( g_w > g_length_hex){
-				if(g_prec > g_w && g_length_hex < g_prec){
-					
-					leng_zero = g_prec - g_length_hex;
-				}else{
-					
-			leng_zero = g_w - g_length_hex;
-				}
-				
-			}
-		}	
-		
-		if(g_prec > 0 && g_w > 0 && g_prec < g_w && g_prec > g_length_hex){
-			leng_space = g_w - g_prec;
-		}else if(g_p && g_w  && g_w > g_prec) 
-		{
-
-			leng_space = g_w - g_length_hex;
-		}
-		while(leng_space != 0){
-			ft_putchar(' ');
-			leng_space--;
-		}
-		
-		if(g_prec == 0 && g_w < g_length_hex && !g_p){
-					leng_zero = 0;
-				}
-		else if(g_prec > 0 && g_prec < g_length_hex && g_w > 0){
-			leng_zero = 0;
-		}
-	 	while(leng_zero != 0){
-
-	 	ft_putchar('0');  //* = ' ' 
-	 	leng_zero--;
-		 
-	 	}
-
-		 
-
-       if(!(num == 0) || (!g_p)){
-	
-		     	 ft_putnbr_base(num,"0123456789ABCDEF");
-	   }
-	 }else if (g_m >= 1){
-		 
-	 	if(  g_prec > 0 && g_length_hex < g_prec){
-			 
-			 leng_zero = g_prec - g_length_hex;
-			//  if(num == 0){
-			// 	 leng_zero = g_w - g_prec;
-			//  }
-			 if(num < 0){
-				 ft_putchar('-');
-			 }
-			 if (g_prec_neg == 0 || g_z > 0){
-			 while(leng_zero != 0){
-		
-	 		ft_putchar('0');  //* = ' ' 
-	 		leng_zero--;
-	 	}
-			 }
-		 } else {
-			 	
-			 if(num < 0){
-				 ft_putchar('-');
-			 }
-		 }
-		 
-		 		//    printf("\n g_prec = %d\n",g_m );
-
-
-       if(!(num == 0) || (!g_p)){
-	
-    	 ft_putnbr_base(num,"0123456789ABCDEF");
-		 if( g_prec_neg > 0 && g_z == 0){
-			if(g_prec < g_w && g_m > 0 ){
-				leng_space = g_prec - g_length_hex;
-			}else
-			 leng_space = g_w - g_length_hex;
-			 
-			 while (leng_space > 0)
-			 {
-				 ft_putchar(' ');
-				 leng_space--;
-			 }
-			 
-		 }
-	   }
-		 else if(g_prec > 0 && g_w  && num == 0)
-    	 ft_putnbr_base(num,"0123456789ABCDEF");
-		 else if(num == 0 && g_m == 1 && g_p == 1 && g_w == 0 ){
-			     	 ft_putnbr_base(num,"0123456789ABCDEF");
-
-		 }
-
-		 		if (g_w > g_prec ){
-			if(g_w > g_length_hex && g_prec > 0 ){
-					leng_space = g_w - g_prec;
-					if(g_prec < g_length_hex){
-						leng_space--;
-					}
-			}
-			else if(g_w > g_length_hex && g_prec){
-				
-				leng_space = g_w - g_length_hex;
-			}
-			else if((g_w > 0 && !g_p) && g_length_hex < g_w){
-				leng_space = g_w - g_length_hex;
-			}else
-			{
-				leng_space = 0;
-			}
-
-		if(num < 0 && g_prec ){
-			leng_space--;
-			if( g_w > g_length_hex && g_prec < g_length_hex){
-			  leng_space = g_length_hex - 1;
-
-			}
-			// 
-
-		}
-		
-		if(g_m == 1 && g_length_hex < g_w && g_p && g_prec == 0 && num != 0){
-			
-			leng_space = g_w - g_length_hex;
-		}
-		if(num == 0 && g_prec == 0 && g_m > 0){
-			
-			leng_space = g_w;
-			if (g_p == 0){
-				// printf("%d\n", leng_space);
-				leng_space--;
-			}
-		}
-		
-	 	while(leng_space != 0){
-		
-	 	ft_putchar(' ');  //* = ' ' 
-	 	leng_space--;
-	 	}
-		
-	 }
-	 }
-	 else{
-		//  printf("srccomm = %d\n", srccomplet);
-	 	while(srccomplet != 0){
-
-	 		ft_putchar(' ');  //* = ' ' 
-	 		srccomplet--;
-	 	}
-	  	
-	
-	//  	if (g_p == 0) 
-	// g_print_p = 1;
-		// printf("\n num %d \n", num);
-		if(num < 0 && g_prec >= g_length_hex  ){
-
-       
-	
-		     	 ft_putnbr_base(num,"0123456789ABCDEF");
-
-		}
-		else if(num != 0 && g_prec >= 0){
-			    	 ft_putnbr_base(num,"0123456789ABCDEF");
-
-		}else if(num == 0 && g_p == 0){
-			    	 ft_putnbr_base(num,"0123456789ABCDEF");
-
-		}
-		
 	}
+	calculat_leng_zero(num);
+	if (g_prec > 0 && g_w > 0 && g_prec < g_w && g_prec > g_length_hex)
+		g_leng_space = g_w - g_prec;
+	else if (g_p && g_w && g_w > g_prec)
+		g_leng_space = g_w - g_length_hex;
+	while (g_leng_space-- != 0)
+		ft_putchar(' ');
+	if (g_prec == 0 && g_w < g_length_hex && !g_p)
+		g_leng_zero = 0;
+	else if (g_prec > 0 && g_prec < g_length_hex && g_w > 0)
+		g_leng_zero = 0;
+	while (g_leng_zero-- != 0)
+		ft_putchar('0');
+	if (!(num == 0) || (!g_p))
+		ft_putnbr_base(num, "0123456789ABCDEF");
+	return (num);
+}
 
+unsigned int	calculat_space_and_print_it_bx(unsigned int num)
+{
+	if (!(num == 0) || (!g_p))
+	{
+		ft_putnbr_base(num, "0123456789ABCDEF");
+		if (g_prec_neg > 0 && g_z == 0)
+		{
+			if (g_prec < g_w && g_m > 0)
+				g_leng_space = g_prec - g_length_hex;
+			else
+				g_leng_space = g_w - g_length_hex;
+			while (g_leng_space-- > 0)
+				ft_putchar(' ');
+		}
+	}
+	else if (g_prec > 0 && g_w && num == 0)
+		ft_putnbr_base(num, "0123456789ABCDEF");
+	else if (num == 0 && g_m == 1 && g_p == 1 && g_w == 0)
+		ft_putnbr_base(num, "0123456789ABCDEF");
+	return (num);
+}
 
+unsigned int	print_bx(unsigned int num)
+{
+	while (g_srccomplet-- != 0)
+		ft_putchar(' ');
+	if (num < 0 && g_prec >= g_length_hex)
+		ft_putnbr_base(num, "0123456789ABCDEF");
+	else if (num != 0 && g_prec >= 0)
+		ft_putnbr_base(num, "0123456789ABCDEF");
+	else if (num == 0 && g_p == 0)
+		ft_putnbr_base(num, "0123456789ABCDEF");
+	return (num);
+}
+
+void			ft_printf_bx(va_list *g_my_list)
+{
+	unsigned int num;
+
+	num = va_arg(*g_my_list, int);
+	find_length_hexa(num);
+	g_leng_space = 0;
+	print_zero(num);
+	if (g_z >= 1 && g_m == 0)
+		find_leng_zero_spac_and_print_bx(num);
+	else if (g_m >= 1)
+	{
+		print_zero_and_space_x(num);
+		calculat_space_and_print_it_bx(num);
+		if (g_w > g_prec)
+			print_space_x(num);
+	}
+	else
+		print_bx(num);
 }

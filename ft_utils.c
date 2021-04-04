@@ -12,11 +12,12 @@
 
 #include "printf.h"
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
-	g_cont += 1;
+	g_cont++;
 }
+
 void	ft_putstr(char *str)
 {
 	int i;
@@ -28,6 +29,7 @@ void	ft_putstr(char *str)
 		i++;
 	}
 }
+
 void	ft_putnbr(int n)
 {
 	unsigned int nbr;
@@ -39,7 +41,6 @@ void	ft_putnbr(int n)
 	}
 	else
 		nbr = n;
-
 	if (nbr > 9)
 	{
 		ft_putnbr(nbr / 10);
@@ -62,4 +63,33 @@ size_t	ft_strlen(const char *str)
 		++str;
 	}
 	return (i);
+}
+
+int		ft_atoi(const char *str)
+{
+	int				i;
+	long			result;
+	int				neg;
+
+	result = 0;
+	neg = 0;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			neg = 1;
+		i++;
+	}
+	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - 48);
+		i++;
+		if (result < 0)
+		{
+			return ((neg) ? 0 : -1);
+		}
+	}
+	return ((neg) ? -result : result);
 }
