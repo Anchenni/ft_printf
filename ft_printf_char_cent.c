@@ -6,13 +6,13 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:51:23 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/03 19:52:42 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/04 23:44:11 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void		find_lengzero_and_lengspace_and_print_char(char src)
+void	find_lengzero_and_lengspace_and_print_char(char src)
 {
 	if (g_w)
 	{
@@ -35,9 +35,9 @@ void		find_lengzero_and_lengspace_and_print_char(char src)
 	}
 }
 
-void		ft_printf_char_cent(void)
+void	ft_printf_char_cent(void)
 {
-	char src;
+	char	src;
 
 	g_srccomplet = 0;
 	src = '%';

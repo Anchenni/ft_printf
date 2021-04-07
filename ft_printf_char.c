@@ -6,20 +6,20 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:53:30 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 22:21:47 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/04 23:44:15 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void		print_space_char(char src)
+void	print_space_char(char src)
 {
 	while (g_srccomplet-- != 0)
 		ft_putchar('0');
 	ft_putchar(src);
 }
 
-void		print_char_and_space_and_zero(char src)
+void	print_char_and_space_and_zero(char src)
 {
 	if (g_w)
 	{
@@ -42,9 +42,9 @@ void		print_char_and_space_and_zero(char src)
 	}
 }
 
-void		ft_printf_char(va_list *g_my_list)
+void	ft_printf_char(va_list *g_my_list)
 {
-	char src;
+	char	src;
 
 	src = va_arg(*g_my_list, int);
 	g_srccomplet = 0;

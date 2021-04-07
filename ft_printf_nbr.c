@@ -6,13 +6,13 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:50 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 22:22:06 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/08 00:50:11 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void		ft_putnbr_long(signed long int nb)
+void	ft_putnbr_long(signed long int nb)
 {
 	if (nb < 0)
 		nb = -nb;
@@ -25,9 +25,9 @@ void		ft_putnbr_long(signed long int nb)
 		ft_putchar(nb + '0');
 }
 
-int			find_leng_d(size_t d)
+int	find_leng_d(size_t d)
 {
-	ssize_t number;
+	ssize_t	number;
 
 	number = d;
 	if (number <= -2147483647)
@@ -46,7 +46,7 @@ int			find_leng_d(size_t d)
 	return (g_l_value);
 }
 
-int			find_leng_zero(int num)
+int	find_leng_zero(int num)
 {
 	if (!(num < 0 && g_leng_d > g_prec))
 		g_leng_zero = g_prec - g_leng_d;
@@ -64,7 +64,7 @@ int			find_leng_zero(int num)
 	return (num);
 }
 
-int			find_leng_space_and_zero(int num)
+int	find_leng_space_and_zero(int num)
 {
 	if (!g_w)
 		g_leng_space = g_prec - g_leng_d;
@@ -83,9 +83,9 @@ int			find_leng_space_and_zero(int num)
 	return (num);
 }
 
-void		ft_printf_nbr(va_list *g_my_list)
+void	ft_printf_nbr(va_list *g_my_list)
 {
-	int num;
+	int	num;
 
 	num = va_arg(*g_my_list, int);
 	g_leng_zero = 0;

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:05 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 22:21:16 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/06 21:20:26 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _PRINTF_H
-# define _PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <stdarg.h>
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-
+# include <stdio.h>
 int				g_w;
 int				g_z;
 int				g_l_value;
@@ -38,7 +38,7 @@ int				g_leng_prec;
 int				g_leng_str;
 char			*g_nul;
 signed long int	g_h;
-va_list g_my_list;
+va_list			g_my_list;
 void			init_zero(void);
 void			ft_printf_char_cent(void);
 void			ft_decimal_tohexa_plus(size_t n);
@@ -82,7 +82,7 @@ void			calculate_leng_space(char *src, int i);
 void			calculat_leng_str(char *src);
 void			print_str(char *src, int i);
 void			print_zero_and_str(char	*src);
-void			find_leng_space_str();
+void			find_leng_space_str(void);
 void			print_space_str(char *src);
 void			wene_with_exist(char *src, int i);
 void			when_prec_is_bigger_than_with(char	*src, int	i);
@@ -113,9 +113,15 @@ void			find_percent(const char *src);
 int				print_mines_and_zero(int num);
 int				print_space(int num);
 int				print_space_nbr(int num);
+int				test_if_number(const char *str, int i, int neg);
+int	find_start_for_with(const char *src, int g_var);
 
-static void (*g_tabfunction[8]) (va_list *) = {ft_printf_str, ft_printf_char,
-	ft_printf_nbr, ft_printf_i, ft_printf_u, ft_printf_x,
+static char	tabindex[8] = {'s', 'c', 'd', 'i', 'u', 'x', 'X', 'p'};
+	int			tempindex;
+
+static	void	(*g_tabfunction[8])(va_list	*) = {ft_printf_str,
+	ft_printf_char, ft_printf_nbr, ft_printf_i,
+	ft_printf_u, ft_printf_x,
 	ft_printf_bx, ft_printf_p};
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:22 by anchenni          #+#    #+#             */
-/*   Updated: 2020/11/15 15:34:48 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/06 20:44:22 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_putchar(char c)
 {
@@ -20,7 +20,7 @@ void	ft_putchar(char c)
 
 void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -32,7 +32,7 @@ void	ft_putstr(char *str)
 
 void	ft_putnbr(int n)
 {
-	unsigned int nbr;
+	unsigned int	nbr;
 
 	if (n < 0)
 	{
@@ -54,7 +54,7 @@ void	ft_putnbr(int n)
 
 size_t	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*str != '\0')
@@ -65,7 +65,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int				i;
 	long			result;
@@ -73,23 +73,26 @@ int		ft_atoi(const char *str)
 
 	result = 0;
 	neg = 0;
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			neg = 1;
-		i++;
-	}
+	i = g_i;
+	// while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+	// 	i++;
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - 48);
+		// printf("\nresult = %ld\n",result);
 		i++;
+		g_i = i - 1;
 		if (result < 0)
 		{
-			return ((neg) ? 0 : -1);
-		}
+			if (neg)
+				return (0);
+			else
+				return (-1);
+		}	
 	}
-	return ((neg) ? -result : result);
+	if (neg)
+		return (-result);
+	else
+		return (result);
+	
 }

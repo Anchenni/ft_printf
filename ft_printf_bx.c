@@ -6,11 +6,11 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:50:54 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 22:21:32 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/04 23:44:06 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 unsigned int	find_leng_zero_spac_and_print_bx(unsigned int num)
 {
@@ -72,9 +72,9 @@ unsigned int	print_bx(unsigned int num)
 	return (num);
 }
 
-void			ft_printf_bx(va_list *g_my_list)
+void	ft_printf_bx(va_list *g_my_list)
 {
-	unsigned int num;
+	unsigned int	num;
 
 	num = va_arg(*g_my_list, int);
 	find_length_hexa(num);

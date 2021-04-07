@@ -6,16 +6,16 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:01:02 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 22:22:39 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/04 23:44:38 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-unsigned int		ft_size_base(char *base)
+unsigned int	ft_size_base(char *base)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (base[i])
@@ -36,9 +36,9 @@ unsigned int		ft_size_base(char *base)
 	return (i);
 }
 
-void				ft_putnbr_base(int nb, char *base)
+void	ft_putnbr_base(int nb, char *base)
 {
-	unsigned int nbr;
+	unsigned int	nbr;
 
 	nbr = nb;
 	if (ft_size_base(base) == 0)
@@ -55,7 +55,7 @@ void				ft_putnbr_base(int nb, char *base)
 	ft_putchar(base[nbr % ft_size_base(base)]);
 }
 
-unsigned int		claculat_space_and_zero_and_print_it(unsigned int num)
+unsigned int	claculat_space_and_zero_and_print_it(unsigned int num)
 {
 	if (g_prec > g_length_hex)
 	{
@@ -81,7 +81,7 @@ unsigned int		claculat_space_and_zero_and_print_it(unsigned int num)
 	return (num);
 }
 
-unsigned int		calculat_leng_zero(unsigned int num)
+unsigned int	calculat_leng_zero(unsigned int num)
 {
 	if (g_w > 0)
 	{
@@ -105,9 +105,9 @@ unsigned int		calculat_leng_zero(unsigned int num)
 	return (num);
 }
 
-void				ft_printf_x(va_list *g_my_list)
+void	ft_printf_x(va_list *g_my_list)
 {
-	unsigned int num;
+	unsigned int	num;
 
 	num = va_arg(*g_my_list, int);
 	find_length_hexa(num);

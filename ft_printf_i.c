@@ -6,16 +6,16 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:54:37 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 22:21:59 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/05 21:55:16 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void		ft_printf_i(va_list *g_my_list)
+void	ft_printf_i(va_list *g_my_list)
 {
-	int num;
-
+	int	num;
+	
 	num = va_arg(*g_my_list, int);
 	g_leng_zero = 0;
 	g_leng_space = 0;

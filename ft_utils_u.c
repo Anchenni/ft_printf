@@ -6,11 +6,11 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:03:21 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/03 20:04:15 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/05 19:36:22 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 unsigned int	calculat_leng_zero_u(unsigned int num)
 {
@@ -34,8 +34,9 @@ unsigned int	calculate_leng_zero2_u(unsigned int num)
 {
 	if (g_prec > 0 && g_leng_d < g_prec)
 	{
-		if (g_w > 0 && g_w < g_prec && g_leng_d < g_w &&
-		g_leng_d < g_prec && g_prec > 0 && g_w < g_prec && g_z > 0)
+		if (g_w > 0 && g_w < g_prec && g_leng_d < g_w
+			&& g_leng_d < g_prec && g_prec > 0
+			&& g_w < g_prec && g_z > 0)
 			g_leng_zero = g_w - g_leng_d;
 		else
 			g_leng_zero = g_prec - g_leng_d;
@@ -84,8 +85,8 @@ unsigned int	calculat_leng_space2_u(unsigned int num)
 			if (g_prec < g_leng_d)
 				g_leng_space--;
 		}
-		else if ((g_w > g_leng_d && g_prec) ||
-		((g_w > 0 && !g_p) && g_leng_d < g_w))
+		else if ((g_w > g_leng_d && g_prec)
+			|| ((g_w > 0 && !g_p) && g_leng_d < g_w))
 			g_leng_space = g_w - g_leng_d;
 		else
 			g_leng_space = 0;
@@ -96,7 +97,11 @@ unsigned int	calculat_leng_space2_u(unsigned int num)
 				g_leng_space = g_leng_d - 1;
 		}
 		if (g_m == 1 && g_leng_d < g_w && g_p && g_prec == 0)
-			g_leng_space = g_w - g_prec;
+		{
+				if (num != 0)
+					g_w -= g_leng_d;
+				g_leng_space = g_w - g_prec;
+		}
 		while (g_leng_space-- != 0)
 			ft_putchar(' ');
 	}

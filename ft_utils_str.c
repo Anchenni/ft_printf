@@ -6,13 +6,13 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:02:54 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/03 20:03:00 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/08 01:42:34 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void		when_there_is_a_mines(char *src, int i)
+void	when_there_is_a_mines(char *src, int i)
 {
 	if (g_p && g_prec < g_leng_str && g_prec > g_w)
 	{
@@ -37,7 +37,7 @@ void		when_there_is_a_mines(char *src, int i)
 	}
 }
 
-void		calculate_leng_space(char *src, int i)
+void	calculate_leng_space(char *src, int i)
 {
 	if (g_w >= g_prec)
 	{
@@ -55,9 +55,9 @@ void		calculate_leng_space(char *src, int i)
 		when_prec_is_bigger_than_with(src, i);
 }
 
-void		calculat_leng_str(char *src)
+void	calculat_leng_str(char *src)
 {
-	int m;
+	int	m;
 
 	if (g_w)
 	{
@@ -69,7 +69,7 @@ void		calculat_leng_str(char *src)
 	}
 }
 
-void		print_str(char *src, int i)
+void	print_str(char *src, int i)
 {
 	if (g_prec > g_leng_str)
 		g_leng_prec = g_leng_str;
@@ -79,9 +79,12 @@ void		print_str(char *src, int i)
 		ft_putchar(src[i++]);
 }
 
-void		print_zero_and_str(char *src)
+void	print_zero_and_str(char *src)
 {
-	while (g_srccomplet-- > 0)
-		ft_putchar('0');
+	if( g_w > g_leng_str){
+		while (g_srccomplet-- > 0)
+			ft_putchar('0');
+	}
+	if(g_w != 0 )
 	ft_putstr(src);
 }

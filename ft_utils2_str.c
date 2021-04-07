@@ -6,13 +6,13 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:08:36 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/03 20:08:37 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/04 23:45:56 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void		find_leng_str_and_print_space(char *src, int i)
+void	find_leng_str_and_print_space(char *src, int i)
 {
 	if (g_prec_neg > 0 && g_prec < g_leng_str)
 		g_srccomplet = g_leng_str;
@@ -32,14 +32,14 @@ void		find_leng_str_and_print_space(char *src, int i)
 		ft_putchar(' ');
 }
 
-void		calculate_spac_and_print_str(char *src, int i)
+void	calculate_spac_and_print_str(char *src, int i)
 {
 	if (g_w && g_prec < g_leng_str && g_p)
 		find_leng_str_and_print_space(src, i);
 	else if (g_w > 0)
 	{
 		if (g_prec_neg > 0 && g_prec > g_leng_str
-				&& g_w < g_prec)
+			&& g_w < g_prec)
 		{
 			g_srccomplet = g_w - g_leng_str;
 			while (g_srccomplet-- > 0)

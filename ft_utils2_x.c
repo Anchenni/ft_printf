@@ -6,13 +6,13 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:12:49 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/03 20:12:52 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/04 23:46:00 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-unsigned int		find_leng_zero_spac_and_print_x(unsigned int num)
+unsigned int	find_leng_zero_spac_and_print_x(unsigned int num)
 {
 	if ((num < 0) && (g_z == 1) && (g_leng_zero >= 0))
 	{
@@ -37,7 +37,7 @@ unsigned int		find_leng_zero_spac_and_print_x(unsigned int num)
 	return (num);
 }
 
-unsigned int		print_zero(unsigned int num)
+unsigned int	print_zero(unsigned int num)
 {
 	if (g_p > 0 && g_m == 0 && g_z == 0)
 	{

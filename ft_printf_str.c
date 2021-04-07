@@ -6,13 +6,13 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:34 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 22:22:20 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/08 01:42:02 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void		find_leng_space_str(void)
+void	find_leng_space_str(void)
 {
 	if (g_w > 0 && g_prec == 0 && g_nul != NULL)
 	{
@@ -32,7 +32,7 @@ void		find_leng_space_str(void)
 	}
 }
 
-void		print_space_str(char *src)
+void	print_space_str(char *src)
 {
 	if (g_w > g_leng_str)
 	{
@@ -55,7 +55,7 @@ void		print_space_str(char *src)
 	}
 }
 
-void		wene_with_exist(char *src, int i)
+void	wene_with_exist(char *src, int i)
 {
 	if (g_w)
 	{
@@ -77,7 +77,7 @@ void		wene_with_exist(char *src, int i)
 	}
 }
 
-void		when_prec_is_bigger_than_with(char *src, int i)
+void	when_prec_is_bigger_than_with(char *src, int i)
 {
 	if (g_w < g_leng_str)
 	{
@@ -105,7 +105,7 @@ void		when_prec_is_bigger_than_with(char *src, int i)
 	}
 }
 
-void		ft_printf_str(va_list *g_my_list)
+void	ft_printf_str(va_list *g_my_list)
 {
 	int		i;
 	char	*src;
@@ -116,12 +116,12 @@ void		ft_printf_str(va_list *g_my_list)
 	if (src == NULL)
 		src = "(null)";
 	g_leng_str = ft_strlen(src);
-	if (g_w > 0 && g_m == 0)
+	if (g_w > 0 && g_m == 0 && g_z == 0)
 		calculate_leng_space(src, i);
 	else
 	{
 		calculat_leng_str(src);
-		if (g_z >= 1)
+		if (g_z > 0 && g_m == 0)
 			print_zero_and_str(src);
 		else if (g_m > 0)
 			when_there_is_a_mines(src, i);

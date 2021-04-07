@@ -6,13 +6,13 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:02:20 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/03 20:02:23 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/08 01:24:18 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-size_t			calculat_space_p(size_t num)
+size_t	calculat_space_p(size_t num)
 {
 	if (num == 0)
 	{
@@ -37,7 +37,7 @@ size_t			calculat_space_p(size_t num)
 	return (num);
 }
 
-size_t			when_there_is_a_mines_p(size_t num)
+size_t	when_there_is_a_mines_p(size_t num)
 {
 	ft_putstr("0x");
 	if (num == 0 && g_prec > 0)
@@ -64,7 +64,7 @@ size_t			when_there_is_a_mines_p(size_t num)
 	return (num);
 }
 
-size_t			whene_there_is_no_mines_p(size_t num)
+size_t	whene_there_is_no_mines_p(size_t num)
 {
 	if (num == 0 && g_prec == 0 && g_w)
 	{
@@ -80,6 +80,13 @@ size_t			whene_there_is_no_mines_p(size_t num)
 			ft_putchar(' ');
 	}
 	ft_putstr("0x");
+	if(g_prec > g_w && g_prec > g_length_hex)
+	{
+		g_leng_space = g_prec - find_leng_d(num) + 1;
+		while (g_leng_space-- != 0)
+			ft_putchar('0');
+
+	}
 	if (num != 0 && g_prec >= 0)
 		ft_decimal_tohexa(num);
 	else if (num == 0 && g_p == 0)

@@ -6,13 +6,13 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:59:11 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 22:22:13 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/08 01:09:30 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void		ft_decimal_tohexa(size_t n)
+void	ft_decimal_tohexa(size_t n)
 {
 	g_length_hex = 0;
 	if (n > 15)
@@ -26,7 +26,7 @@ void		ft_decimal_tohexa(size_t n)
 		ft_putchar(n + 48);
 }
 
-void		find_length_hexa(size_t n)
+void	find_length_hexa(size_t n)
 {
 	if (n > 15)
 	{
@@ -39,9 +39,9 @@ void		find_length_hexa(size_t n)
 		g_length_hex++;
 }
 
-void		ft_printf_p(va_list *g_my_list)
+void	ft_printf_p(va_list *g_my_list)
 {
-	size_t num;
+	size_t	num;
 
 	num = va_arg(*g_my_list, size_t);
 	find_length_hexa(num);

@@ -6,15 +6,15 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:59:50 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 22:22:30 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/05 18:47:14 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void			ft_putnbr_u(unsigned int n)
+void	ft_putnbr_u(unsigned int n)
 {
-	unsigned int nbr;
+	unsigned int	nbr;
 
 	if (n < 0)
 	{
@@ -84,9 +84,9 @@ unsigned int	print_mines_and_zero_u(unsigned int num)
 	return (num);
 }
 
-void			ft_printf_u(va_list *g_my_list)
+void	ft_printf_u(va_list *g_my_list)
 {
-	unsigned int num;
+	unsigned int	num;
 
 	num = va_arg(*g_my_list, int);
 	g_leng_d = find_leng_d(num);
