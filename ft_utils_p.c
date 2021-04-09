@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:02:20 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/08 01:24:18 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/09 23:32:00 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,23 @@ size_t	whene_there_is_no_mines_p(size_t num)
 		if (num == 0 && g_p == 0)
 			g_srccomplet--;
 	}
+	print_space_p(num);
+	ft_putstr("0x");
+	if (g_prec > g_w && g_prec > g_length_hex)
+	{
+		g_leng_space = g_prec - find_leng_d(num) + 1;
+		while (g_leng_space-- != 0)
+			ft_putchar('0');
+	}
+	if (num != 0 && g_prec >= 0)
+		ft_decimal_tohexa(num);
+	else if (num == 0 && g_p == 0)
+		ft_decimal_tohexa(num);
+	return (num);
+}
+
+size_t	print_space_p(size_t num)
+{
 	if (g_length_hex < g_w)
 	{
 		if (num == 0 && g_w < g_length_hex)
@@ -79,17 +96,5 @@ size_t	whene_there_is_no_mines_p(size_t num)
 		while (g_srccomplet-- != 0)
 			ft_putchar(' ');
 	}
-	ft_putstr("0x");
-	if(g_prec > g_w && g_prec > g_length_hex)
-	{
-		g_leng_space = g_prec - find_leng_d(num) + 1;
-		while (g_leng_space-- != 0)
-			ft_putchar('0');
-
-	}
-	if (num != 0 && g_prec >= 0)
-		ft_decimal_tohexa(num);
-	else if (num == 0 && g_p == 0)
-		ft_decimal_tohexa(num);
 	return (num);
 }

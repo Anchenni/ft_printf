@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:01:36 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/08 00:50:29 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/09 23:23:29 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,8 @@ int	print_space_when_num_diff_than_zero(int num)
 	{
 		if (g_prec < g_w && g_m > 0)
 			g_leng_space = g_prec - g_leng_d;
-		else{
-			
+		else
 			g_leng_space = g_w - g_leng_d;
-		}
 		while (g_leng_space-- > 0)
 			ft_putchar(' ');
 	}

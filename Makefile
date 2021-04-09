@@ -6,7 +6,7 @@
 #    By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/04 23:31:51 by anchenni          #+#    #+#              #
-#    Updated: 2021/04/04 23:42:44 by anchenni         ###   ########.fr        #
+#    Updated: 2021/04/09 23:41:26 by anchenni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRCS		=	ft_printf.c ft_utils.c ft_printf_str.c \
 				ft_utils_p.c\
 				ft_utils_u.c\
 				ft_utils_printf.c\
+				ft_utils2_printf.c\
+				ft_utils2_u.c\
 				
 				
 				

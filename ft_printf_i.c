@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:54:37 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/05 21:55:16 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/09 22:12:54 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_printf_i(va_list *g_my_list)
 {
 	int	num;
-	
+
 	num = va_arg(*g_my_list, int);
 	g_leng_zero = 0;
 	g_leng_space = 0;

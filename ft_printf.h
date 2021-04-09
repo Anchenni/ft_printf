@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:05 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/06 21:20:26 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/09 23:50:07 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int				g_srccomplet;
 int				g_leng_prec;
 int				g_leng_str;
 char			*g_nul;
+int				g_continu;
 signed long int	g_h;
 va_list			g_my_list;
+int				g_tempindex;
 void			init_zero(void);
 void			ft_printf_char_cent(void);
 void			ft_decimal_tohexa_plus(size_t n);
@@ -114,10 +116,16 @@ int				print_mines_and_zero(int num);
 int				print_space(int num);
 int				print_space_nbr(int num);
 int				test_if_number(const char *str, int i, int neg);
-int	find_start_for_with(const char *src, int g_var);
+int				find_start_for_with(const char *src, int g_var);
+void			flags_star_prec(const char *src);
+void			find_flag_with_prec(const char *src);
+void			find_star_prec(const char *src);
+void			find_star_with(const char *src);
+void			find_flags_and_percent(const char *src);
+size_t			print_space_p(size_t num);
+unsigned int	calculate_space_u(unsigned int num);
 
-static char	tabindex[8] = {'s', 'c', 'd', 'i', 'u', 'x', 'X', 'p'};
-	int			tempindex;
+static char		g_tabindex[8] = {'s', 'c', 'd', 'i', 'u', 'x', 'X', 'p'};
 
 static	void	(*g_tabfunction[8])(va_list	*) = {ft_printf_str,
 	ft_printf_char, ft_printf_nbr, ft_printf_i,

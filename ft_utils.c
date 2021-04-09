@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:22 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/06 20:44:22 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/09 23:43:53 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,9 @@ int	ft_atoi(const char *str)
 	result = 0;
 	neg = 0;
 	i = g_i;
-	// while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-	// 	i++;
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - 48);
-		// printf("\nresult = %ld\n",result);
 		i++;
 		g_i = i - 1;
 		if (result < 0)
@@ -94,5 +91,4 @@ int	ft_atoi(const char *str)
 		return (-result);
 	else
 		return (result);
-	
 }

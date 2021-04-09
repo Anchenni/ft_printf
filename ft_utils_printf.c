@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:02:32 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/08 00:46:37 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/09 23:51:09 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,13 @@ void	init_zero(void)
 
 void	find_percent(const char *src)
 {
-	// if (src[g_i] == '%')
-	// {
-		g_j++;
-		if (g_j % 2 == 1)
-			ft_printf_char_cent();
-		if (src[g_i + 1])
-		{	
-			// if (src[g_i + 1] != '%'){
-			// ft_putchar(src[g_i + 1]);
-			// }
-			g_i++;
-		}
-		if (src[g_i] != '%')
-			ft_putchar(src[g_i]);
-		
-	// }
-	// else if(tempindex != -1)
-	// 	ft_putchar(src[g_i]);
-	// // else if (src[g_i] != '%' && src[g_i - 1] == '%')
-	// // 	ft_putchar(src[g_i]);
-	// // else if (src[g_i] != '%' && src[g_i - 1] == '%') 
-	// else if (src[g_i] != '%') 
-	// 	ft_putchar(src[g_i]);
-	
+	g_j++;
+	if (g_j % 2 == 1)
+		ft_printf_char_cent();
+	if (src[g_i + 1])
+		g_i++;
+	if (src[g_i] != '%')
+		ft_putchar(src[g_i]);
 }
 
 int	find_start_for_with(const char *src, int g_var)
@@ -70,4 +53,42 @@ int	find_start_for_with(const char *src, int g_var)
 		}
 	}
 	return (g_var);
+}
+
+void	flags_star_prec(const char *src)
+{
+	g_p = 1;
+	if (((src[g_i] <= '9' && src[g_i] >= '0')) || ((src[g_i] == '*')))
+	{
+		find_star_prec(src);
+		g_i++;
+	}
+}
+
+void	find_flag_with_prec(const char *src)
+{
+	g_continu = 0;
+	g_tempindex = findindex(g_tabindex, src[g_i]);
+	if (src[g_i] == '-' && src[g_i++])
+	{
+		g_m = 1;
+		g_continu = 1;
+	}
+	else if (src[g_i] == '0' && g_z == 0 && src[g_i++])
+	{
+		g_z = 1;
+		g_continu = 1;
+	}
+	else if (((src[g_i] <= '9' && src[g_i] >= '0')
+			&& (src[g_i] > '0')) || ((src[g_i] == '*')))
+	{
+		find_star_with(src);
+		g_i++;
+		g_continu = 1;
+	}
+	else if (src[g_i] == '.' && g_p == 0 && src[g_i++])
+	{
+		flags_star_prec(src);
+		g_continu = 1;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:02:54 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/08 01:42:34 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/09 23:38:07 by anchenni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,11 @@ void	print_str(char *src, int i)
 
 void	print_zero_and_str(char *src)
 {
-	if( g_w > g_leng_str){
+	if (g_w > g_leng_str)
+	{
 		while (g_srccomplet-- > 0)
 			ft_putchar('0');
 	}
-	if(g_w != 0 )
-	ft_putstr(src);
+	if (g_w != 0 )
+		ft_putstr(src);
 }
