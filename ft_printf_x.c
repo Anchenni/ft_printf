@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: escarrie <escarrie@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:01:02 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 23:44:38 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/11 16:17:25 by escarrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,6 @@ void	ft_putnbr_base(int nb, char *base)
 	if (ft_size_base(base) == 0)
 	{
 		return ;
-	}
-	if (nbr < 0)
-	{
-		ft_putchar('-');
-		nbr = nbr * -1;
 	}
 	if (nbr >= ft_size_base(base))
 		ft_putnbr_base((nbr / ft_size_base(base)), base);

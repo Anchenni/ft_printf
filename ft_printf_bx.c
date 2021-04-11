@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_bx.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: escarrie <escarrie@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:50:54 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 23:44:06 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/11 16:18:12 by escarrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 unsigned int	find_leng_zero_spac_and_print_bx(unsigned int num)
 {
-	if ((num < 0) && (g_z == 1) && (g_leng_zero >= 0))
-	{
-		if (g_length_hex > g_prec)
-			ft_putchar('-');
-	}
 	calculat_leng_zero(num);
 	if (g_prec > 0 && g_w > 0 && g_prec < g_w && g_prec > g_length_hex)
 		g_leng_space = g_w - g_prec;
@@ -63,9 +58,7 @@ unsigned int	print_bx(unsigned int num)
 {
 	while (g_srccomplet-- != 0)
 		ft_putchar(' ');
-	if (num < 0 && g_prec >= g_length_hex)
-		ft_putnbr_base(num, "0123456789ABCDEF");
-	else if (num != 0 && g_prec >= 0)
+	if (num != 0 && g_prec >= 0)
 		ft_putnbr_base(num, "0123456789ABCDEF");
 	else if (num == 0 && g_p == 0)
 		ft_putnbr_base(num, "0123456789ABCDEF");

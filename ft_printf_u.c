@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: escarrie <escarrie@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:59:50 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/05 18:47:14 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/11 15:42:08 by escarrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,7 @@ void	ft_putnbr_u(unsigned int n)
 {
 	unsigned int	nbr;
 
-	if (n < 0)
-	{
-		nbr = -n;
-		ft_putchar('-');
-	}
-	else
-		nbr = n;
+	nbr = n;
 	if (nbr > 9)
 	{
 		ft_putnbr_u(nbr / 10);
@@ -62,9 +56,7 @@ unsigned int	print_u(unsigned int num)
 {
 	while (g_srccomplet-- != 0)
 		ft_putchar(' ');
-	if (num < 0 && g_prec >= g_leng_d)
-		ft_putnbr_u(num);
-	else if (num != 0 && g_prec >= 0)
+	if (num != 0 && g_prec >= 0)
 		ft_putnbr_u(num);
 	else if (num == 0 && g_p == 0)
 		ft_putnbr_u(num);
@@ -73,11 +65,6 @@ unsigned int	print_u(unsigned int num)
 
 unsigned int	print_mines_and_zero_u(unsigned int num)
 {
-	if ((num < 0) && (g_z == 1) && (g_leng_zero >= 0))
-	{
-		if (g_leng_d > g_prec)
-			ft_putchar('-');
-	}
 	while (g_srccomplet-- != 0)
 		ft_putchar('0');
 	ft_putnbr_u(num);
@@ -88,7 +75,7 @@ void	ft_printf_u(va_list *g_my_list)
 {
 	unsigned int	num;
 
-	num = va_arg(*g_my_list, int);
+	num = va_arg(*g_my_list, unsigned int);
 	g_leng_d = find_leng_d(num);
 	if (g_p > 0)
 		print_space_u(num);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: escarrie <escarrie@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:12:49 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/04 23:46:00 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/11 16:19:54 by escarrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 unsigned int	find_leng_zero_spac_and_print_x(unsigned int num)
 {
-	if ((num < 0) && (g_z == 1) && (g_leng_zero >= 0))
-	{
-		if (g_length_hex > g_prec)
-			ft_putchar('-');
-	}
 	calculat_leng_zero(num);
 	if (g_prec > 0 && g_w > 0 && g_prec < g_w && g_prec > g_length_hex)
 		g_leng_space = g_w - g_prec;

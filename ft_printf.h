@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anchenni <anchenni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: escarrie <escarrie@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:33:05 by anchenni          #+#    #+#             */
-/*   Updated: 2021/04/09 23:50:07 by anchenni         ###   ########.fr       */
+/*   Updated: 2021/04/11 16:22:09 by escarrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-# include <stdio.h>
 int				g_w;
 int				g_z;
 int				g_l_value;
@@ -90,6 +89,7 @@ void			wene_with_exist(char *src, int i);
 void			when_prec_is_bigger_than_with(char	*src, int	i);
 void			find_leng_str_and_print_space(char	*src, int i);
 void			calculate_spac_and_print_str(char *src, int i);
+unsigned int	find_leng_zero_spac_and_print_bx(unsigned int num);
 unsigned int	find_leng_zero_spac_and_print_x(unsigned int num);
 unsigned int	print_zero(unsigned int num);
 unsigned int	print_zero_and_space_x(unsigned int num);
@@ -101,7 +101,6 @@ unsigned int	calculat_leng_zero(unsigned int num);
 unsigned int	claculat_space_and_zero_and_print_it(unsigned int num);
 unsigned int	print_bx(unsigned int num);
 unsigned int	calculat_space_and_print_it_bx(unsigned int num);
-unsigned int	find_leng_zero_spac_and_print_bx(unsigned int num);
 size_t			calculat_space_p(size_t num);
 size_t			when_there_is_a_mines_p(size_t num);
 size_t			whene_there_is_no_mines_p(size_t num);
